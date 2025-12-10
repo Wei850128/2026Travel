@@ -97,9 +97,10 @@
     <script type="module">
         // Firebase 模組載入
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        // 修正 1: 加入 onAuthStateChanged
         import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        // 修正 2: 移除重複的 import 行
         import { getFirestore, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-        import { setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
 
         // === 1. 全域變數 & Firebase 初始化 ===
@@ -113,8 +114,8 @@
         const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : null;
         const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
 
-        // 啟用偵錯日誌
-        setLogLevel('debug');
+        // 修正 3: 移除未定義的 setLogLevel
+        // setLogLevel('debug');
 
 
         // 預設行程數據 (已補齊所有七天的資料)
